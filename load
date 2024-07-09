@@ -72,7 +72,7 @@ if not isfolder("Builds") then
     end
     local size = Vector3.new(unpack(v.Size:split(", ")))
 
-    if size.Magnitude <= 5 then return end
+    if not size or not size.Magnitude or size.Magnitude <= 5 then return end
 
     local args = {
         [1] = "Create",
@@ -86,7 +86,7 @@ if not isfolder("Builds") then
         local part = workspace.Map.Destructible.Buildable:GetChildren()[i]
     local v = decoded[i]
     local size = Vector3.new(unpack(v.Size:split(", ")))
-    if size.Magnitude <= 5 then return end
+    if not size or not size.Magnitude or size.Magnitude <= 5 then return end
         if math.random(1,500) == 5 then
     game:GetService("RunService").RenderStepped:Wait()
     end
