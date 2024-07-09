@@ -71,7 +71,7 @@ if not isfolder("Builds") then
     game:GetService("RunService").RenderStepped:Wait()
     end
 local size = Vector3.new(unpack(Size:split(", ")))
-if size.Magnitude <= 5 then continue end
+if size.Magnitude <= 10 then continue end
     local args = {
         [1] = "Create",
         [2] = "Part",
@@ -88,7 +88,7 @@ print(i, "Generating Parts")
     game:GetService("RunService").RenderStepped:Wait()
     end
 local size = Vector3.new(unpack(Size:split(", ")))
-if size.Magnitude <= 5 then continue end
+if size.Magnitude <= 10 then continue end
 if math.random(1, 5) == 1 then game:GetService("RunService").Heartbeat:Wait() end 
 print(i)
 configpart(part, v.CFrame, v.Size, v.Color, v.Material,v.Transparency, v.CanCollide, v.CastShadow, v.Breakable)
