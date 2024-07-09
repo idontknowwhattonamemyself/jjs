@@ -1,0 +1,89 @@
+if not isfolder("Builds") then
+    makefolder("Builds")
+    end
+    
+    local buildfile = "Sigma"
+    if not isfile("Builds/Sigma") then messagebox("no build retard", "Nigga", 2) return end
+    local part = 1
+    local decoded = game:GetService("HttpService"):JSONDecode(readfile("Builds/"..buildfile))
+    function configpart(part, CF, Size, Color, Material, Transparency, CanCollide, CastShadow, Breakable)
+        local args = {
+            [1] = "Color",
+            [2] = {
+                [1] = part
+            },
+            [3] = Color3.new(unpack(Color:split(", ")))
+        }
+        
+        game:GetService("Players").LocalPlayer.PlayerGui.BuildTools.Handle.BuildEvent:FireServer(unpack(args))
+        local args = {
+            [1] = "Transparency",
+            [2] = {
+                [1] = part
+            },
+            [3] = tostring(Transparency)
+        }
+        
+        game:GetService("Players").LocalPlayer.PlayerGui.BuildTools.Handle.BuildEvent:FireServer(unpack(args))
+        local args = {
+            [1] = "Material",
+            [2] = {
+                [1] = Part
+            },
+            [3] = Material
+        }
+        
+        game:GetService("Players").LocalPlayer.PlayerGui.BuildTools.Handle.BuildEvent:FireServer(unpack(args))
+        local args = {
+            [1] = "Breakable",
+            [2] = {
+                [1] = Part
+            },
+            [3] = false
+        }
+        
+        game:GetService("Players").LocalPlayer.PlayerGui.BuildTools.Handle.BuildEvent:FireServer(unpack(args))
+        local args = {
+            [1] = "Collide",
+            [2] = {
+                [1] = part
+            },
+            [4] = CanCollide
+        }
+        
+        game:GetService("Players").LocalPlayer.PlayerGui.BuildTools.Handle.BuildEvent:FireServer(unpack(args))
+        local args = {
+            [1] = "Move",
+            [2] = {
+                [1] = {
+                    [1] = part,
+                    [2] = CFrame.new(unpack(CF:split(", "))),
+                    [3] = Vector3.new(unpack(Size:split(", ")))
+                }
+            }
+        }
+        
+        game:GetService("Players").LocalPlayer.PlayerGui.BuildTools.Handle.BuildEvent:FireServer(unpack(args))
+    end
+    for i = 1, #decoded do
+    local v = decoded[i]
+    if math.random(1,5) == 5 then
+    game:GetService("RunService").RenderStepped:Wait()
+    end
+    local args = {
+        [1] = "Create",
+        [2] = "Part",
+        [3] = Vector3.new(-8.546382904052734, 35.504825592041016, 1.7835818529129028)
+    }
+    
+    game:GetService("Players").LocalPlayer.PlayerGui.BuildTools.Handle.BuildEvent:FireServer(unpack(args))
+    end
+    for i = 1, #decoded do
+        local part = workspace.Map.Destructible.Buildable:GetChildren()[i]
+    local v = decoded[i]
+        if math.random(1,5) == 5 then
+    game:GetService("RunService").RenderStepped:Wait()
+    end
+        configpart(part, v.CFrame, v.Size, v.Color, v.Material,v.Transparency, v.CanCollide, v.CastShadow, v.Breakable)
+    end
+    print("build complete")
