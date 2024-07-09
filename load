@@ -57,7 +57,7 @@ if not isfolder("Builds") then
             [2] = {
                 [1] = {
                     [1] = part,
-                    [2] = CFrame.new(unpack(CF:split(", "))),
+                    [2] = CFrame.new(unpack(CF:split(", "))) + Vector3.new(0,500,0),
                     [3] = Vector3.new(unpack(Size:split(", ")))
                 }
             }
