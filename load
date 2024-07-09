@@ -70,6 +70,8 @@ if not isfolder("Builds") then
     if math.random(1,500) == 5 then
     game:GetService("RunService").RenderStepped:Wait()
     end
+    local size = Vector3.new(unpack(v.Size:split(", ")))
+
     if size.Magnitude <= 5 then return end
 
     local args = {
