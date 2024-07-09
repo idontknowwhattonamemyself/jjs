@@ -1,0 +1,20 @@
+if not isfolder("Builds") then
+    makefolder("Builds")
+    end
+    
+    local buildfile = "Sigma"
+    local faggot = {}
+    for i, v in pairs(game:GetService('Workspace'):GetDescendants()) do 
+    if v.ClassName == "Part" then 
+    table.insert(faggot, {
+        ["CFrame"] = tostring(v.CFrame),
+        ["Size"] = tostring(v.Size),
+        ["Color"] = tostring(v.Color),
+        ["Material"] = tostring(v.Material.Name),
+        ["Transparency"] = tostring(v.Transparency),
+        ["CanCollide"] = v.CanCollide,
+        ["CastShadow"] = v.CastShadow
+    })
+    end
+    end
+    writefile("Builds/"..buildfile, game:GetService("HttpService"):JSONEncode(faggot))
