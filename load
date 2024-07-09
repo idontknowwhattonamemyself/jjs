@@ -57,7 +57,7 @@ if not isfolder("Builds") then
             [2] = {
                 [1] = {
                     [1] = part,
-                    [2] = CFrame.new(unpack(CF:split(", "))) + Vector3.new(0,500,0),
+                    [2] = CFrame.new(unpack(CF:split(", "))),
                     [3] = Vector3.new(unpack(Size:split(", ")))
                 }
             }
@@ -70,8 +70,6 @@ if not isfolder("Builds") then
     if math.random(1,500) == 5 then
     game:GetService("RunService").RenderStepped:Wait()
     end
-local size = Vector3.new(unpack(Size:split(", ")))
-if size.Magnitude <= 1 then continue end
     local args = {
         [1] = "Create",
         [2] = "Part",
@@ -79,7 +77,6 @@ if size.Magnitude <= 1 then continue end
     }
     
     game:GetService("Players").LocalPlayer.PlayerGui.BuildTools.Handle.BuildEvent:FireServer(unpack(args))
-print(i, "Generating Parts")
     end
     for i = 1, #decoded do
         local part = workspace.Map.Destructible.Buildable:GetChildren()[i]
@@ -87,10 +84,6 @@ print(i, "Generating Parts")
         if math.random(1,500) == 5 then
     game:GetService("RunService").RenderStepped:Wait()
     end
-local size = Vector3.new(unpack(Size:split(", ")))
-if size.Magnitude <= 1 then continue end
-if math.random(1, 5) == 1 then game:GetService("RunService").Heartbeat:Wait() end 
-print(i)
-configpart(part, v.CFrame, v.Size, v.Color, v.Material,v.Transparency, v.CanCollide, v.CastShadow, v.Breakable)
+        configpart(part, v.CFrame, v.Size, v.Color, v.Material,v.Transparency, v.CanCollide, v.CastShadow, v.Breakable)
     end
     print("build complete")
